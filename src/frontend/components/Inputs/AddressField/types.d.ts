@@ -1,0 +1,3 @@
+interface AddressFieldProps extends FormLabelAbstractBaseInterface{
+
+}

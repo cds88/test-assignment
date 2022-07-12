@@ -1,0 +1,7 @@
+
+
+
+
+interface SecondPageProps{
+    proceedButton : ProceedButtonInterface
+}

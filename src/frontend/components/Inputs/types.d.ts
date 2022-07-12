@@ -1,0 +1,5 @@
+interface FormLabelAbstractBaseInterface{
+    label: string
+}
+
+
