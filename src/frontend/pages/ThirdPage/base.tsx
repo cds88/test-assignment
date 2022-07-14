@@ -5,7 +5,8 @@ import {useForm, FormProvider} from 'react-hook-form'
 import { useLoading } from "@/backend/hooks/useLoading";
 import { useToast } from "@chakra-ui/react";
 import { useHead } from "@/backend/hooks/useHead";
-import axios from '@/backend/utils/axios'
+
+import { performApiCall } from "@/backend/store/actions/submitForm";
 export const defaultFormState = {
   name:'',
   surname: '',
@@ -17,18 +18,7 @@ export const defaultFormState = {
   state:'',
   zip:''
 }
-const performApiCall =async({...data})=>{
-  try{
-      const response = await axios({
-        method:'POST',
-        url:'',
-        data: data
-      })
-  }
-  catch(error){
 
-  }
-}
 /**
  * Third page which includes form and submission
  * Right container shows all parts from a chosen minifig
@@ -51,15 +41,32 @@ export default function ThirdPage(Props) {
     <FormProvider {...form} >
         <form 
         onSubmit={handleSubmit(e=>{
+            
+            performApiCall({
+              onSuccess:(data)=>{
+                // perform operation with new returned data
+                toast({
+                  title:'Succesfully finalized shipment',
+                  description:"You can proceed to buy more Minifigs",
+                  status: 'success',
+                  duration: 3000,
+                  isClosable: true
+                })
 
-            toast({
-              title:'Succesfully finalized shipment',
-              description:"You can proceed to buy more Minifigs",
-              status: 'success',
-              duration: 3000,
-              isClosable: true
+                resetState?.()
+              },
+              onError: (error)=>{
+                // error - notify user about the issue
+                toast({
+                  title:'You have faced issues concerning finalizing shipment',
+                  description:"Please try again later",
+                  status: 'error',
+                  duration: 3000,
+                  isClosable: true
+                })                
+              }
             })
-            resetState?.()
+
         })}
         className='w-full'>
           <Flex
