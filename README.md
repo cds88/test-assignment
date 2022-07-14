@@ -7,14 +7,13 @@ pnpm dev
 ```
 
 ## CHARAKTERYSTYKA KODU
-* aplikacja utworzone poprzez Vite (podczas live-reload'u przeładowywane są tylko te moduły, które są w użycie w przeciwieństwie do Webpack'a, który odświeża całe drzewo dependencji)
-* aplikacja podzielona na backend(logika) i frontend(wyglad) - inspiracja twórcą Redux'a Andrew Clark'a, który utworzył store'a ponieważ dzielił aplikacje reactowe na frontend i backend. 
-* komponenty podzielone na base(logika) i widok(wyglad)
-* konstrukcja formularzy wg. mojego projektu PPI (Props per Input - propsy i ich nomenklatura odpowiadaja nazwie Input'ów w formularzu co poprawia widoczność, i stanowi wzorzez poprawnego przekazywania props'ów )
-* hooki, routy, locale i wszystko zwiazane z logiką w katalogu backend
-* style, strony, componenty i assets w katalogu frontend
-* Framework'i wykorzystane do stylowania to Chakra UI (komponenty, responsywność, inputy) oraz Tailwind CSS - utility classes
-* hooki wykorzystane w projekcie mojego autorstwa: useProduce, useTranslation, useValidation 
-* Formularze wykorzystują framework react-hook-form
-* Testowanie odbywa się przy pomocy nowoczesnego narzędzia vitest
-* Podkład graficzny wykonany przy pomocy tabletu
+* React application created with help of Vite(during live-reload only the necesary modules are reloaded in opposition to Webpack which refreshes the whole tree of dependencies)
+* Applications split into backend(logic) and frontend(views) - inspired by one of the creator's of Redux Andrew Clark, who split the React applications into frontend and backend side.
+* Components split into base(logic) and view
+* hooks, routes, locales and everything connected to logic in backend folder
+* styles, pages, components and assets in frontend directory
+* Frameworks used for styling are Chakra UI (components, responsiveness, inputs) and Tailwind CSS (utility classes)
+* Hooks created by me: useProduce
+* Forms use react-hook-form library
+* The background graphics made by me with help of a tablet
+* Tests implemented in Vitest(unit testing) and Cypress (end-to-end)
