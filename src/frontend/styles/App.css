@@ -10,6 +10,11 @@
   height: 40vmin;
   pointer-events: none;
 }
+@font-face{
+  font-family:'LemonDays';
+  src:local("LemonDays"), url('..\public\fonts\LemonDays\LemonDays.ttf') format("ttf"), 
+  url('..\public\fonts\LemonDays\LemonDays.otf') format('otf');
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

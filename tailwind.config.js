@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage:{
+        "main": "url('./src/frontend/public/background3.png')"
+      },
       colors:{
         primary:{
           main: "rgb(31,33,54)"

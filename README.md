@@ -17,3 +17,4 @@ pnpm dev
 * hooki wykorzystane w projekcie mojego autorstwa: useProduce, useTranslation, useValidation 
 * Formularze wykorzystują framework react-hook-form
 * Testowanie odbywa się przy pomocy nowoczesnego narzędzia vitest
+* Podkład graficzny wykonany przy pomocy tabletu

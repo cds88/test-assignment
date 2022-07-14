@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>42/42</span>
+                <span class='fraction'>63/63</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>42/42</span>
+                <span class='fraction'>63/63</span>
             </div>
         
             
@@ -107,7 +107,26 @@
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -149,52 +168,90 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import * as React from "react"; 
-import { Spinner } from '@chakra-ui/react'
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import * as React from "react";
+import {useEffect} from 'react'
+import { Spinner } from "@chakra-ui/react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useProduce } from "@/backend/hooks/useProduce";
 const Pages = {
   1: React.lazy(() =&gt; import("../../../frontend/pages/FirstPage")),
   2: React.lazy(() =&gt; import("../../../frontend/pages/SecondPage")),
   3: React.lazy(() =&gt; import("../../../frontend/pages/ThirdPage")),
 };
 &nbsp;
-  /**
-   * This component take's care of switching between pages
-   * 
-   * Core concept for this module is Middleware functionality
-   * which enables to split logic * 
-   * It is designed to implement a set of interfaces
-   * Those interfaces are based on fixed position 
-   * and employ rather global functionalities
-   * like for example:
-   * - chat
-   * - faq
-   * - a message to the admin
-   * - step back
-   *
-   *  @type {React.FC&lt;PaginatorInterface&gt;}
-   *  @returns {React.ReactElement}
-   */
+/**
+ * This component take's care of switching between pages
+ *
+ * Core concept for this module is Fetching data for all pages
+ *
+ * Core concept for this module is Middleware functionality
+ * which enables to split logic *
+ * It is designed to implement a set of interfaces
+ * Those interfaces are based on fixed position
+ * and employ rather global functionalities
+ * like for example:
+ * - chat
+ * - faq
+ * - a message to the admin
+ * - step back
+ *
+ *  @type {React.FC&lt;PaginatorInterface&gt;}
+ *  @returns {React.ReactElement}
+ */
 &nbsp;
 export default function Paginator(Props: PaginatorInterface) {
-&nbsp;
   
-  const { pageProps, ...props} = Props
 &nbsp;
+  const { pageProps, ...props } = Props;
+  const {setState, state} = Props
   const Component = Pages[props.state.selectedPage];
   
- 
-&nbsp;
+  useEffect(()=&gt;{
+    pageProps?.fetcher?.({setState , state })
+  },[props.state.selectedPage])
   return (
-    &lt;React.Suspense fallback={&lt;Spinner&gt; Loading&lt;/Spinner&gt;}&gt;
-      &lt;Component {...pageProps} {...props} /&gt;
- 
+    &lt;React.Suspense
+      fallback={
+        &lt;div className="text-xl flex justify-center items-center h-screen  flex-1 text-white"&gt;
+          &lt;Spinner /&gt;
+        &lt;/div&gt;
+      }
+    &gt;
+      &lt;AnimatePresence&gt;
+        &lt;motion.div
+          
+          className="w-full h-full"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        &gt;
+          &lt;Component {...pageProps} {...props} /&gt;
+        &lt;/motion.div&gt;
+      &lt;/AnimatePresence&gt;
     &lt;/React.Suspense&gt;
   );
 }
-&nbsp;
-&nbsp;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -202,7 +259,7 @@ export default function Paginator(Props: PaginatorInterface) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Tue Jul 12 2022 21:41:01 GMT+0200 (czas środkowoeuropejski letni)
+                at Thu Jul 14 2022 07:48:24 GMT+0200 (czas środkowoeuropejski letni)
             </div>
         <script src="../../../prettify.js"></script>
         <script>

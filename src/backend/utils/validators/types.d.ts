@@ -1,0 +1,1 @@
+type ValidatorTypes = 'required' | 'phone_number' | 'not_number' | 'email'

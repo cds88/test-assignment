@@ -4,6 +4,6 @@ interface ProceedButtonInterface extends React.InputHTMLAttributes<HTMLInputElem
 
 }
 
-interface FirstPageProps{
+interface FirstPageProps extends DefaultPageProps{
     proceedButton : ProceedButtonInterface
 }

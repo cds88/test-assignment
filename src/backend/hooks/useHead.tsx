@@ -1,4 +1,4 @@
-import { HeadContext } from "../providers/headProvider"
+import { HeadContext } from "@/backend/providers/headProvider"
 import { useContext, useEffect } from "react"
 
 

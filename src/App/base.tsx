@@ -1,67 +1,41 @@
-import React, { useState } from 'react' 
-import '../frontend/styles/App.css' 
- 
-import Paginator from '../frontend/components/Paginator' 
-import {defaultState} from '../backend/store/defaultState'
-import {useProduce} from '../backend/hooks/useProduce'
+import React, { useState } from "react";
+import "../frontend/styles/App.css";
 
-  /**
-   *  App represents a small part of some Lego application
-   *  First and second page are basically part of the same form
-   *  The application it self is a presentation so 
-   *  there was no need for a router to be implemented
-   *  @type {React.FC}
-   *  @returns {React.ReactElement}
-   */
-  
+import Paginator from "@/frontend/components/Paginator";
+import { defaultState } from "@/backend/store/defaultState";
+import { useProduce } from "@/backend/hooks/useProduce";
+import routes from "@/backend/routes";
+/**
+ *  App represents a small part of some Lego application
+ *  First and second page are basically part of the same form
+ *  The application it self is a presentation so
+ *  there was no need for a router to be implemented
+ *  @type {React.FC}
+ *  @returns {React.ReactElement}
+ */
+
 function App() {
+  const [state, setState , , resetState] = useProduce<typeof defaultState>(defaultState);
 
-  const [state, setState] = useProduce<typeof defaultState>(defaultState)
+  const pagesProps = routes({ setState });
 
-  const pageProps = {
-    1: {
-      proceedButton: {
-        onClick:()=>{
-          setState(state=>({
-            ...state,
-            selectedPage: 2
-          }))
-        }
-      }
-    },
-    2:{
-      proceedButton:{
-        onClick:()=>{
-          setState(state=>({
-            ...state,
-            selectedPage: 3
-          }))
-        }
-      }
-    },
-    3:{
-      formInput : {
-        onSubmit:e=>{
-          alert("e")
-        }
-      }
-    }
-}
-  
   return (
-    <div  className="
-    bg-primary-main 
-   h-screen flex w-screen " 
->
-   
+    <div
+      style={{
+        fontFamily: "LemonDays",
+      }}
+      className="
+   bg-main    
+   h-screen flex w-screen "
+    >
       <Paginator
         state={state}
         setState={setState}
-        pageProps={pageProps[state.selectedPage]}
-        
+        resetState={resetState}
+        pageProps={pagesProps[state.selectedPage]}
       />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

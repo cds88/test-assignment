@@ -6,13 +6,15 @@ type ReturnFunction = (state: Object)=> void
 
 type ReturnProduce = ReturnObject | ReturnFunction
 
-export type UseProduceType<State> = [state:State, setState:ReturnFunction, prevState: State | {}]
-
+export type UseProduceType<State> = [state:State, setState:ReturnFunction, prevState: State | {}, resetState: ()=>void]
+/**
+ * Hook designed to combine Immer with useState. 
+ * 
+ * @param defaultState 
+ * @returns {UseProduceType}
+ */
 export const useProduce  = <State, >(defaultState :State) : UseProduceType<State>=>   {
-//const  UseProduce= <State>(defaultState ) : UseProduceType<State>{
-
-
-    
+  
     const [state, setState] = React.useState<State >({...defaultState})
 
     const prevState = React.useRef(null)
@@ -22,7 +24,9 @@ export const useProduce  = <State, >(defaultState :State) : UseProduceType<State
         prevState.current = state
     },[state])
 
-
+    const resetState = ()=>{
+        setState({...defaultState})
+    }
 
 
     return [state, (arg : ReturnProduce )=>{
@@ -38,6 +42,6 @@ export const useProduce  = <State, >(defaultState :State) : UseProduceType<State
                     ...arg as Object
                 }
             }))
-        } }, prevState ] }
+        } }, prevState , resetState] }
 
 
